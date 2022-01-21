@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>demo-parent</artifactId>
+        <groupId>org.zhaojd.component</groupId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../demo-parent/pom.xml</relativePath>
+    </parent>
+
+    <artifactId>demo-consumer-server</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <description>服务消费者demo工程</description>
+
+    <properties>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.zhaojd.component</groupId>
+            <artifactId>demo-provider-client</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <!-- 基础框架 -->
+        <dependency>
+            <groupId>org.zhaojd.component</groupId>
+            <artifactId>component-common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.zhaojd.component</groupId>
+            <artifactId>component-springcloud</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.zhaojd.component</groupId>
+            <artifactId>component-dao</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.zhaojd.component</groupId>
+            <artifactId>demo-provider-client</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.1.10.RELEASE</version>
+                <configuration>
+                    <mainClass>org.zhaojd.component.demo.consumer.BootApplication</mainClass>
+                    <layout>JAR</layout>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/webapp</directory>
+                <targetPath>META-INF/resources</targetPath>
+                <includes>
+                    <include>**/**</include>
+                </includes>
+            </resource>
+        </resources>
+    </build>
+
+</project>
